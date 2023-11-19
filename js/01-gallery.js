@@ -19,7 +19,10 @@ for (const imgList of galleryItems) {
 
 galleryContainer.addEventListener("click", (event) => {
   event.preventDefault();
-  const imgOriginal = basicLightbox.create(`<img src=${event.target.dataset.source}>`);
+  if (event.target.classList.contains("gallery__image")) {
+    const imgOriginal = basicLightbox.create(
+      `<img src="${event.target.dataset.source}" alt="${event.target.alt}" />`
+    );
 
   document.onkeydown = function(imgOriginalCloseEsc) {
     let isEscape = false;
@@ -31,6 +34,5 @@ galleryContainer.addEventListener("click", (event) => {
     }
 };
   imgOriginal.show()
+    }
 });
-
-
